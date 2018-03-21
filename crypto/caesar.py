@@ -48,8 +48,8 @@ def decryptUppercase(message):
                 translated += ALPHABET[(ALPHABET.find(symbol) + key) % len(ALPHABET)]
             else:
                 translated += symbol
-        if detectEnglish.isEnglish(translated):
-            print('Key #%s: \t%s' % (key, translated))
+        #if detectEnglish.isEnglish(translated):
+        print('Key #%s: \t%s' % (key, translated))
 
 def exitProgram():
     print('Usage: ./caesar.py [-a] NAME_OF_FILE')
