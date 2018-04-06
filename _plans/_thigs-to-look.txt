@@ -1,0 +1,4 @@
+- Offline OUI database lookup
+https://gist.github.com/jpouellet/a4301a5a8c0094673c76ffa94b94ca75
+https://code.wireshark.org/review/gitweb?p=wireshark.git;a=blob_plain;f=manuf
+
