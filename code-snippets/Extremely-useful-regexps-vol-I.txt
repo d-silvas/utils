@@ -1,0 +1,64 @@
+---===###   EXTREMELY USEFUL REGEXPS VOL. I   ###===---
+
+>>> This is a line explaining what we want to Change
+This is the regexp that matches what we want
+This is the expression we have to write in the "replace" box
+
+
+
+/******************
+*       HTML      *
+*******************/
+
+>>> Change HTML attributes without space before them
+"(class|id|value|method|name|type|action|style|placeholder)="
+" $1="
+
+>>> Delete emtpy attributes
+(class|id|value|method|name|type|action|style|placeholder)="\s*"
+
+
+>>> Fix spaces before attributes (be careful, it will fail in line breaks)
+(.)\s{2,}(class|id|value|method|name|type|action|style|placeholder)="
+$1 $2="
+
+>>> Select ALL attributes and values
+>>> NOTE: event actions like onclick are out of this regexp
+(class|id|value|method|name|type|action|style|placeholder)="[\w\-\s]*"|required|disabled|selected
+
+
+
+/******************
+*       PHP       *
+*******************/
+
+>>> Replace <?php print(...) ?> with a short tag, <?= ... ?>
+>>> NOTE: made it lazy, with .*?, because it was taking more than one at the same time
+<\?php print\((.*?)\)[ ]?\?>
+<?= $1 ?>
+
+>>> Change objects for arrays (for ex $candidate):
+\$candidate\->(\w*)
+$candidate["$1"]
+
+>>> Transform SQL Server Selects into a line for PHP
+\[(\w+)\]\n
+$1 
+
+
+/******************
+*   PROG GENERAL  *
+*******************/
+
+>>> Include spaces around a "=" symbol
+(\w)=([\'\"]\w)
+$1 = $2
+
+>>> Include spaces between + operands
+([\w"'])\+([\w'"])
+$1 + $2
+
+>>> Change quotes (be careful when there are unclosed quotes)
+>>> NOTE: not for use in SQL queries, because we use ' quotes inside " queries
+'([\w\$\-]*?)'
+"$1"
